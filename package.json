@@ -1,0 +1,24 @@
+{
+  "name": "binesraices",
+  "version": "1.0.0",
+  "description": "Real estate project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "MVC",
+    "Pug",
+    "Tailwind",
+    "Mysql",
+    "Sequelize"
+  ],
+  "author": "Juan Rios - @riossdev",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.3"
+  }
+}
