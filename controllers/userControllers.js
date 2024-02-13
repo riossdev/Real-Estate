@@ -1,3 +1,7 @@
+import { check, validationResult } from "express-validator";
+
+import Users from "../models/User.js";
+
 // Formulario-Login
 const formularioLogin = (req, res) => {
   res.render("auth/login", {
@@ -10,6 +14,23 @@ const formularioRegistro = (req, res) => {
     Pagina: "Crear Cuenta!",
   });
 };
+
+// Formulario Registro
+const Registro = async (req, res) => {
+  // validations
+
+  await check("nombre")
+    .notEmpty()
+    .withMessage("El nombre es obligatorio ")
+    .run(req);
+
+  let resultado = validationResult(req);
+  res.json(resultado.array());
+
+  const usuario = await Users.create(req.body);
+  res.json(usuario);
+};
+
 // Olvide Password
 const formularioOlvidePassword = (req, res) => {
   res.render("auth/olvidePassword", {
@@ -17,4 +38,9 @@ const formularioOlvidePassword = (req, res) => {
   });
 };
 
-export { formularioLogin, formularioRegistro, formularioOlvidePassword };
+export {
+  formularioLogin,
+  formularioRegistro,
+  Registro,
+  formularioOlvidePassword,
+};
