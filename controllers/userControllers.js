@@ -31,8 +31,14 @@ const Registro = async (req, res) => {
     .isLength({ min: 6 })
     .withMessage("El password debe ser al menos de 6 caracteres")
     .run(req);
+  // await check("repetirPassword")
+  //   .equals("password")
+  //   .withMessage("Los passwords no son iguales")
+  //   .run(req);
   await check("repetirPassword")
-    .equals("password")
+    .isLength({ min: 6 })
+    .withMessage("El password debe ser al menos de 6 caracteres")
+    .equals(req.body.password) // Accedemos al valor del campo 'password'
     .withMessage("Los passwords no son iguales")
     .run(req);
 
